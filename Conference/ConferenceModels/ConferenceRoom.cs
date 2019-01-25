@@ -21,6 +21,6 @@ namespace ConferenceModels
         {
 			_roomId = roomId;
             EquipmentList = new List<Equipment>();
-        }
+        }       
     }
 }

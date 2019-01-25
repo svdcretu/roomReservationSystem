@@ -8,25 +8,5 @@ namespace ConferenceModels
 		public string Name { get; set; }
 		public string Email { get; set; }
 
-		public virtual void DoNotingPublic()
-		{
-
-		}
-
-		protected internal virtual void DoNotingProtectedInternal()
-		{
-
-		}
-
-
-		protected virtual void DoNotingProtected()
-		{
-
-		}
-
-		private void DoNotingPrivate()
-		{
-
-		}
 	}
 }

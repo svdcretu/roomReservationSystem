@@ -18,14 +18,6 @@ namespace Conference
 
 			};
 
-			var tempClass = new TempClass();
-			tempClass.CreateNewUser();
-			tempClass.CreateNewUserWithInstance();
-			
-			var user = new User();
-			user.DoNotingPublic();
-
-			UserExtension userExt = new UserExtension();
 
             Console.WriteLine(cr.Description);
             Console.ReadLine();
