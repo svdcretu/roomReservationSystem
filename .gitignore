@@ -1,6 +1,7 @@
 **/bin
 **/obj
 *.suo
+**/*.suo
 
 # Ignore Visual Studio 2015 project/local environment-specific files
 .vs/
@@ -12,6 +13,7 @@
 # Include additional ignore statements for the above **/bin and **/obj entries.
 bin/
 obj/
+v12/
 
 **/packages
 
