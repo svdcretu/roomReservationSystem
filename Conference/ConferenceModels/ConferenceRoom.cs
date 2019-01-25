@@ -20,6 +20,6 @@ namespace ConferenceModels
         public ConferenceRoom(int roomId)
         {
 			_roomId = roomId;
-        }       
+         }       
     }
 }
