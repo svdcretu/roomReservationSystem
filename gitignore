@@ -1,0 +1,48 @@
+**/bin
+**/obj
+*.suo
+
+# Ignore Visual Studio 2015 project/local environment-specific files
+.vs/
+
+# Ignore VS Code IDE preferences
+**/.vscode
+
+# Visual Studio integrated Git extension does not recognize ** in the beginning of paths.
+# Include additional ignore statements for the above **/bin and **/obj entries.
+bin/
+obj/
+
+**/packages
+
+# Visual Studio integrated Git extension does not recognize ** in the beginning of paths.
+# Include an additional ignore statement for the above **/packages entry.
+packages/
+
+*.user
+*.suo
+App.config
+web.config
+Thumbs.db
+*.cache
+.idea/
+
+
+# npm
+npm-debug.log
+
+# Git 
+*.orig
+*.rej
+
+*.DotSettings
+!*.sln.DotSettings
+
+#Ignore log files and output files from test
+**/Logs
+Logs/
+
+# SSDT
+*.jfm
+
+.gitconfig
