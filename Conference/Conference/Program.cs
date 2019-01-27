@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConferenceServices;
 using ConferenceModels;
+
 
 namespace Conference
 {
@@ -11,12 +13,30 @@ namespace Conference
     {
         static void Main(string[] args)
         {
-            ConferenceRoom conf1 = new ConferenceRoom(1);
-            conf1.Description = "Conference 1";
+            //List of users
+            UserServices userServices = new UserServices();
+            List<User> userList = userServices.GetUsers();
+            foreach (User user in userList)
+            {
+                userServices.PrintUserData(user);
+            }
 
-            Console.WriteLine(conf1.Description);
+            //List the user with a certain id
+            int i = 5;
+            Console.WriteLine(" ");
+            User selectedUser = userServices.GetUser(i);
+            userServices.PrintUserData(selectedUser);
+
+            RoomServices roomServices = new RoomServices();
+            List<ConferenceRoom> roomList = roomServices.GetRooms();
+            Console.WriteLine(" ");
+            foreach (ConferenceRoom room in roomList)
+            {
+                roomServices.PrintRoomDetails(room);
+            }
+
+
             Console.ReadLine();
-
 
         }
     }

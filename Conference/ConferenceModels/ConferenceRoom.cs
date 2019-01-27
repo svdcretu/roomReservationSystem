@@ -5,10 +5,9 @@ namespace ConferenceModels
 {
     public class ConferenceRoom
     {
-		private readonly int _roomId;
 
-        public int RoomId { get { return _roomId; } }
-		public string Name { get; set; }
+        public int RoomId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public int Floor { get; set; }
         public string MapUrl { get; set; }
@@ -16,10 +15,12 @@ namespace ConferenceModels
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public List<Equipment> EquipmentList { get; set; }
-		
-        public ConferenceRoom(int roomId)
+
+        public ConferenceRoom()
         {
-			_roomId = roomId;
-         }       
+            EquipmentList = new List<Equipment>();
+        }
+
     }
+    
 }
