@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using ConferenceModels;
 using ConferenceRepos;
+using System.Linq;
 
 
 namespace ConferenceServices
 {
     public class UserServices
     {
-        private List<User> users;
+        private List<User> userList;
         UserRepository userRepository;
 
         public UserServices()
@@ -18,22 +19,24 @@ namespace ConferenceServices
 
         public List<User> GetUsers()
         {
-            users = userRepository.GetUsers();
-            return users;
+            userList = userRepository.GetUsers();
+            return userList;
         }
 
         public User GetUser(int userId)
         {
-            users = userRepository.GetUsers();
-            User result = users[0];
-            foreach (User user in users)
+            User result = null;
+            try
             {
-                if (user.UserId == userId)
-                {
-                    result = user;
-                    break;
-                }
+                userList = userRepository.GetUsers();
+                result = userList.Where(x => x.UserId == userId).First();
             }
+
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine($"There is no user with id: {userId}.");
+            }
+
             return result;
         }
 

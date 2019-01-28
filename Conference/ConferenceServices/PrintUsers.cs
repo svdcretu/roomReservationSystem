@@ -9,7 +9,11 @@ namespace ConferenceServices
     {
         public static void PrintUserData(User user)
         {
-            Console.WriteLine($"User Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}");
+            if (user != null)
+            {
+                Console.WriteLine($"User Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}");
+            }
+                
         }
     }
 }

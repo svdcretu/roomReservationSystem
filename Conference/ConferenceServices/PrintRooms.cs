@@ -9,7 +9,11 @@ namespace ConferenceServices
     {
         public static void PrintRoomDetails(ConferenceRoom room)
         {
-            Console.WriteLine($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
+            if (room != null)
+            {
+                Console.WriteLine($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
+            }
+           
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ConferenceModels;
 using ConferenceRepos;
@@ -14,7 +15,7 @@ namespace ConferenceServices
         public RoomServices()
         {
             roomRepository = new RoomRepository();
-              }
+        }
 
 
         public List<ConferenceRoom> GetRooms()
@@ -26,20 +27,18 @@ namespace ConferenceServices
 
         public ConferenceRoom GetRoom(int roomId)
         {
-            roomList = roomRepository.GetRooms();
-            ConferenceRoom result = roomList[0];
-
-            IEnumerable<ConferenceRoom> room = roomList.Where(x => x.RoomId == roomId).ToList();
-            //foreach (ConferenceRoom room in roomList)
-            //{
-            //    if (room.RoomId == roomId)
-            //    {
-            //        result = room;
-            //        break;
-            //    }
-            //}
+            ConferenceRoom result = null;
+            try
+            {
+                roomList = roomRepository.GetRooms();
+                result = roomList.Where(x => x.RoomId == roomId).Single();
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine($"There should be only one room with id: {roomId}.");
+            }
             return result;
         }
 
-        }
+    }
 }

@@ -13,36 +13,37 @@ namespace Conference
     {
         static void Main(string[] args)
         {
-            //List of users
-            //UserServices userServices = new UserServices();
-            //List<User> userList = userServices.GetUsers();
-            //foreach (User user in userList)
-            //{
-            //    PrintUsers.PrintUserData(user);
-            //}
-
-            //List the user with a certain id
-            //int i = 5;
-            //Console.WriteLine(" ");
-            //User selectedUser = userServices.GetUser(i);
-            //PrintUsers.PrintUserData(selectedUser);
-
-            //RoomServices roomServices = new RoomServices();
-            //List<ConferenceRoom> roomList = roomServices.GetRooms();
-            //Console.WriteLine(" ");
-            //foreach (ConferenceRoom room in roomList)
-            //{
-            //    PrintRooms.PrintRoomDetails(room);
-            //}
-
-
-            RoomServices roomServices = new RoomServices();
-            //List the user with a certain id
-            int i = 2;
+            //Listing all the users
+            Console.WriteLine("Listing all the users:");
+            UserServices userServices = new UserServices();
+            List<User> userList = userServices.GetUsers();
+            foreach (User user in userList)
+            {
+                PrintUsers.PrintUserData(user);
+            }
             Console.WriteLine(" ");
-            ConferenceRoom selectedRoom = roomServices.GetRoom(i);
-            PrintRooms.PrintRoomDetails(selectedRoom);
 
+            //Listing the user with a certain id
+            int userId = 3;
+            Console.WriteLine($"Listing the user with id {userId}:");
+            User selectedUser = userServices.GetUser(userId);
+            PrintUsers.PrintUserData(selectedUser);
+            Console.WriteLine(" ");
+
+            //Listing all the rooms
+            RoomServices roomServices = new RoomServices();
+            List<ConferenceRoom> roomList = roomServices.GetRooms();
+            foreach (ConferenceRoom room in roomList)
+            {
+                PrintRooms.PrintRoomDetails(room);
+            }
+            Console.WriteLine(" ");
+
+            //Listing the room with a certain id
+            int roomId = 1;
+            Console.WriteLine($"Listing the room with id {roomId}:");
+            ConferenceRoom selectedRoom = roomServices.GetRoom(roomId);
+            PrintRooms.PrintRoomDetails(selectedRoom);
             Console.ReadLine();
 
         }
