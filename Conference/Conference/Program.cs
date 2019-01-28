@@ -18,21 +18,21 @@ namespace Conference
             List<User> userList = userServices.GetUsers();
             foreach (User user in userList)
             {
-                userServices.PrintUserData(user);
+                PrintUsers.PrintUserData(user);
             }
 
             //List the user with a certain id
             int i = 5;
             Console.WriteLine(" ");
             User selectedUser = userServices.GetUser(i);
-            userServices.PrintUserData(selectedUser);
+            PrintUsers.PrintUserData(selectedUser);
 
             RoomServices roomServices = new RoomServices();
             List<ConferenceRoom> roomList = roomServices.GetRooms();
             Console.WriteLine(" ");
             foreach (ConferenceRoom room in roomList)
             {
-                roomServices.PrintRoomDetails(room);
+                PrintRooms.PrintRoomDetails(room);
             }
 
 
