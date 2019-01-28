@@ -16,11 +16,6 @@ namespace ConferenceModels
         public double Longitude { get; set; }
         public List<Equipment> EquipmentList { get; set; }
 
-        public ConferenceRoom()
-        {
-            EquipmentList = new List<Equipment>();
-        }
-
     }
-    
+
 }

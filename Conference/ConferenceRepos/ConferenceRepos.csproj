@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj" />
-    <ProjectReference Include="..\ConferenceRepos\ConferenceRepos.csproj" />
   </ItemGroup>
 
 </Project>

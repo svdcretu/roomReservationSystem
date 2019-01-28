@@ -1,37 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using ConferenceModels;
+using ConferenceRepos;
 
 namespace ConferenceServices
 {
     public class RoomServices
     {
-        List<ConferenceRoom> roomList;
-        List<Equipment> equipmentList;
+        private List<ConferenceRoom> roomList;
+        private RoomRepository roomRepository;
+
 
         public RoomServices()
         {
-            roomList = new List<ConferenceRoom>();
-            roomList.Add(
-                new ConferenceRoom()
-                { RoomId = 1, Name = "Manhattan", Floor = 1, MapUrl = "url1", Description = "Description1", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Jabra} });
-            roomList.Add(
-                  new ConferenceRoom() { RoomId = 2, Name = "Times Square", Floor = 1, MapUrl = "url2", Description = "Description2", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Laptop, Equipment.Monitor } });
+            roomRepository = new RoomRepository();
         }
 
 
         public List<ConferenceRoom> GetRooms()
         {
+            roomList = roomRepository.GetRooms();
             return roomList;
         }
 
 
-        public void PrintRoomDetails(ConferenceRoom room)
+        public ConferenceRoom GetRoom(int roomId)
         {
-            Console.WriteLine($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ",room.EquipmentList.ToArray())}");
+            ConferenceRoom result = null;
+            try
+            {
+                roomList = roomRepository.GetRooms();
+                result = roomList.Where(x => x.RoomId == roomId).Single();
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine($"There should be only one room with id: {roomId}.");
+            }
+            return result;
         }
-
 
     }
 }
