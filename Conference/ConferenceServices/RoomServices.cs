@@ -31,11 +31,16 @@ namespace ConferenceServices
             try
             {
                 roomList = roomRepository.GetRooms();
-                result = roomList.Where(x => x.RoomId == roomId).Single();
+                result = roomList.SingleOrDefault(x => x.RoomId == roomId);                
             }
             catch (InvalidOperationException)
             {
-                Console.WriteLine($"There should be only one room with id: {roomId}.");
+                var myEx = new InvalidOperationException($"Room with id {roomId} is duplicated");
+                throw myEx;
+            }
+            catch (Exception)
+            {
+                throw;
             }
             return result;
         }

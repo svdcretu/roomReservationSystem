@@ -40,10 +40,23 @@ namespace Conference
             Console.WriteLine(" ");
 
             //Listing the room with a certain id
-            int roomId = 1;
+            int roomId = 5;
             Console.WriteLine($"Listing the room with id {roomId}:");
-            ConferenceRoom selectedRoom = roomServices.GetRoom(roomId);
-            PrintRooms.PrintRoomDetails(selectedRoom);
+            try
+            {
+                ConferenceRoom selectedRoom = roomServices.GetRoom(roomId);
+                PrintRooms.PrintRoomDetails(selectedRoom);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);                
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"An unexpected exception was thrown: {e}");
+            }
+            
+            
             Console.ReadLine();
 
         }
