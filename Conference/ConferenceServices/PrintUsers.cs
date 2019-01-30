@@ -3,39 +3,28 @@ using System.Collections.Generic;
 using System.Text;
 using ConferenceModels;
 using ConferenceUtils;
+using ConferenceInterfaces;
 
 
-namespace ConferenceServices
+namespace ConferenceServices 
 {
-    public class PrintUsers
+    public class PrintUsers : IPrint
     {
 
-
-        public static void PrintUserData(User user)
+        public void Print(string text, string destination)
         {
-
-            if (user != null)
-            {
-                Console.WriteLine(user);
-            }
-
-        }
-
-        public void Print(User user, string destination)
-        {
-            string userSerialized = $"User Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}";
             switch (destination)
             {
                 case "1":
-                    PrintUtils.PrintToFile(userSerialized);
+                    PrintUtils.PrintToFile(text);
                     break;
-                case "2":                 
+                case "2":
                 default:
-                    Console.WriteLine(userSerialized);
+                    Console.WriteLine(text);
                     break;
             }
+
+
         }
-
-
     }
 }

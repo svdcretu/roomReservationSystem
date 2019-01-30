@@ -58,6 +58,10 @@
       <Project>{b5991969-481a-44b5-b55f-8ea9ba18dccb}</Project>
       <Name>ConferenceServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj">
+      <Project>{c7f84633-8f51-4148-b735-fabddbc58275}</Project>
+      <Name>ConferenceUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
