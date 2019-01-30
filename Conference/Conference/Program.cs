@@ -61,32 +61,47 @@ namespace Conference
 
             #endregion
 
-            Dictionary<string, string> validOptions = new Dictionary<string, string>()
+            string printOption = GetPrintOptionFromUser();
+
+            UserServices userServices = new UserServices();
+            PrintUsers printUsers = new PrintUsers();
+            List<User> userList = userServices.GetUsers();
+            int userId = 1;
+            User selectedUser = userServices.GetUser(userId);
+            printUsers.Print(selectedUser, printOption);
+            Console.ReadKey();
+
+
+
+            string GetPrintOptionFromUser()
+            {
+
+                Dictionary<string, string> validOptions = new Dictionary<string, string>()
             {
              { "1", "Print to File"},
              { "2", "Print to Console" }
             };
 
-            string userInput = "";
-            bool invalidInput = true;
-            while (!validOptions.Keys.Contains(userInput))
-            {
-                Console.WriteLine("Please choose an option (1/2) and press Enter to apply:");
-                Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value}");
-                Console.WriteLine($"{validOptions.ElementAt(1).Key}:{validOptions.ElementAt(1).Value}");
-
-                userInput = Console.ReadLine().Trim();
-                invalidInput = string.IsNullOrEmpty(userInput) || string.IsNullOrWhiteSpace(userInput) || !validOptions.Keys.Contains(userInput);
-
-                if (!invalidInput)
+                string userInput = "";
+                bool invalidInput = true;
+                while (!validOptions.Keys.Contains(userInput))
                 {
-                    var chosenOption = validOptions.SingleOrDefault(x => x.Key == userInput);
-                    Console.WriteLine($"You have chosen {chosenOption.Key}: {chosenOption.Value}");
+                    Console.WriteLine("Please choose an option (1/2) and press Enter to apply:");
+                    Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value}");
+                    Console.WriteLine($"{validOptions.ElementAt(1).Key}:{validOptions.ElementAt(1).Value}");
+
+                    userInput = Console.ReadLine().Trim();
+                    invalidInput = string.IsNullOrEmpty(userInput) || string.IsNullOrWhiteSpace(userInput) || !validOptions.Keys.Contains(userInput);
+
+                    if (!invalidInput)
+                    {
+                        var chosenOption = validOptions.SingleOrDefault(x => x.Key == userInput);
+                        userInput = chosenOption.Key;
+                    }
+
                 }
-
+                return userInput;
             }
-
-            Console.ReadLine();
 
         }
     }
