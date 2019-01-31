@@ -16,7 +16,7 @@ namespace ConferenceUtils
             //Location of file to print in
             string currentDirPath = Directory.GetCurrentDirectory();
             string repositoryPath = currentDirPath.Substring(0, currentDirPath.IndexOf(repoName) + repoName.Length);
-            string printFilePath = Path.Combine(repositoryPath, "Resources", printFileName);            
+            string printFilePath = Path.Combine(repositoryPath, "Resources", printFileName);
             return printFilePath;
         }
 
@@ -34,7 +34,13 @@ namespace ConferenceUtils
                 writeFile.WriteLine(text);
                 writeFile.Flush();
                 writeFile.Dispose();
-                Console.WriteLine("Successfully printed to file.");
+
+                string readFileText = File.ReadAllText(printFilePath).Replace("\r", string.Empty).Replace("\n", string.Empty);
+                if (readFileText.Length != 0)
+                {
+                    Console.WriteLine("Successfully printed to file.");
+                }
+
             }
             catch (IOException ex)
             {

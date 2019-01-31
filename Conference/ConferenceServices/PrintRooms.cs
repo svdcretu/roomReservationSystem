@@ -1,19 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConferenceModels;
+using ConferenceInterfaces;
+using ConferenceUtils;
 
 namespace ConferenceServices
 {
-    public class PrintRooms
+    public class PrintRooms : IPrint
     {
-        public static void PrintRoomDetails(ConferenceRoom room)
+
+        public void Print(string text, string destination)
         {
-            if (room != null)
+            switch (destination)
             {
-                Console.WriteLine($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
+                case "1":
+                    PrintUtils.PrintToFile(text);
+                    break;
+                case "2":
+                default:
+                    Console.WriteLine(text);
+                    break;
             }
-           
+
+
         }
 
     }

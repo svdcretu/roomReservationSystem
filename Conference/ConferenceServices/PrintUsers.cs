@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConferenceModels;
-using ConferenceUtils;
 using ConferenceInterfaces;
+using ConferenceUtils;
 
 
-namespace ConferenceServices 
+namespace ConferenceServices
 {
     public class PrintUsers : IPrint
     {

@@ -25,6 +25,18 @@ namespace ConferenceServices
         }
 
 
+        public String GetRoomsAsString()
+        {
+            var res = "";
+            roomList = roomRepository.GetRooms();
+            foreach (ConferenceRoom room in roomList)
+            {
+                res += String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
+            }
+            return res;
+        }
+
+
         public ConferenceRoom GetRoom(int roomId)
         {
             ConferenceRoom result = null;
@@ -44,6 +56,32 @@ namespace ConferenceServices
             }
             return result;
         }
+
+
+
+        public string GetRoomAsString(int roomId)
+        {
+            string result = "";
+
+            try
+            {
+                roomList = roomRepository.GetRooms();
+                var room = roomList.SingleOrDefault(x => x.RoomId == roomId);
+                result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
+            }
+
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine($"There is no unique room with id: {roomId}.");
+            }
+
+            catch (NullReferenceException)
+            {
+                Console.WriteLine($"There is no room with id: {roomId}.");
+            }
+            return result;
+        }
+
 
     }
 }

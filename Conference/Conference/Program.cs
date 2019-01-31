@@ -23,6 +23,13 @@ namespace Conference
             Console.ReadKey();
 
 
+            //RoomServices roomServices = new RoomServices();
+            //PrintRooms printRooms = new PrintRooms();
+            //printRooms.Print(roomServices.GetRoomAsString(2), printOption);
+            //Console.ReadKey();
+
+
+
         }
     }
 }
