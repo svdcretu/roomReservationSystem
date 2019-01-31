@@ -15,12 +15,14 @@ namespace ConferenceServices
         public RoomServices()
         {
             roomRepository = new RoomRepository();
+            roomList = roomRepository.Connect(ConnectionType.Hardcoded, "aaa");
         }
 
 
         public List<ConferenceRoom> GetRooms()
         {
-            roomList = roomRepository.GetRooms();
+            //roomList = roomRepository.GetRoomsHardcoded();
+            //roomList = roomRepository.Connect(ConnectionType.Hardcoded, "aaa");
             return roomList;
         }
 
@@ -28,7 +30,8 @@ namespace ConferenceServices
         public String GetRoomsAsString()
         {
             var res = "";
-            roomList = roomRepository.GetRooms();
+            //roomList = roomRepository.GetRoomsHardcoded();
+            //roomList = roomRepository.Connect(ConnectionType.Hardcoded, "aaa");
             foreach (ConferenceRoom room in roomList)
             {
                 res += String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
@@ -42,7 +45,7 @@ namespace ConferenceServices
             ConferenceRoom result = null;
             try
             {
-                roomList = roomRepository.GetRooms();
+                //roomList = roomRepository.GetRoomsHardcoded();
                 result = roomList.SingleOrDefault(x => x.RoomId == roomId);                
             }
             catch (InvalidOperationException)
@@ -65,7 +68,7 @@ namespace ConferenceServices
 
             try
             {
-                roomList = roomRepository.GetRooms();
+                //roomList = roomRepository.GetRoomsHardcoded();
                 var room = roomList.SingleOrDefault(x => x.RoomId == roomId);
                 result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
             }

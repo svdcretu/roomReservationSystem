@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj" />
     <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj" />
   </ItemGroup>
 

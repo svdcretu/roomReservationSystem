@@ -1,15 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using ConferenceModels;
+using ConferenceInterfaces;
 
 namespace ConferenceRepos
 {
-    public class RoomRepository
+    public class RoomRepository : IConnect<List<ConferenceRoom>> 
     {
         private List<ConferenceRoom> roomList;
         private List<Equipment> equipmentList;
 
-        public List<ConferenceRoom> GetRooms()
+        public List<ConferenceRoom> Connect(ConnectionType connectionType, string sourceName)
+        {
+            List<ConferenceRoom> result;
+
+            switch (connectionType)
+            {
+                case ConnectionType.Hardcoded:
+                    result = GetRoomsHardcoded();
+                    break;
+                default:
+                    result = GetRoomsHardcoded();
+                    break;
+            }
+
+            return result;
+        }
+
+       
+
+        public List<ConferenceRoom> GetRoomsHardcoded()
         {
             roomList = new List<ConferenceRoom>();
             equipmentList = new List<Equipment>();
@@ -24,5 +44,6 @@ namespace ConferenceRepos
 
             return roomList;
         }
+
     }
 }
