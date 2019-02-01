@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ConferenceInterfaces\ConferenceInterfaces.csproj" />
     <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj" />
     <ProjectReference Include="..\ConferenceRepos\ConferenceRepos.csproj" />
