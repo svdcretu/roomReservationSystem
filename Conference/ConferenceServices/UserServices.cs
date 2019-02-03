@@ -23,6 +23,17 @@ namespace ConferenceServices
             return userList;
         }
 
+        public String GetUsersAsString()
+        {
+            var res = "";
+            userList = userRepository.GetUsers();
+            foreach (User user in userList)
+            {
+                res += String.Format($"Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}") + System.Environment.NewLine;
+            }
+            return res;
+        }
+
         public User GetUser(int userId)
         {
             User result = null;
@@ -39,6 +50,26 @@ namespace ConferenceServices
 
             return result;
         }
+
+        public string GetUserAsString(int userId)
+        {
+            string result = "";
+
+            try
+            {
+                userList = userRepository.GetUsers();
+                var user = userList.Single(x => x.UserId == userId);
+                result = string.Format($"Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}");
+            }
+
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine($"There is no user with id: {userId}.");
+            }
+            return result;
+        }
+
+
 
 
     }

@@ -1,19 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConferenceModels;
+using ConferenceInterfaces;
+using ConferenceUtils;
+
 
 namespace ConferenceServices
 {
-    public class PrintUsers
+    public class PrintUsers : IPrint
     {
-        public static void PrintUserData(User user)
+
+        public void Print(string text, string destination)
         {
-            if (user != null)
+            switch (destination)
             {
-                Console.WriteLine($"User Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}");
+                case "1":
+                    PrintUtils.PrintToFile(text);
+                    break;
+                case "2":
+                default:
+                    Console.WriteLine(text);
+                    break;
             }
-                
+
+
         }
     }
 }

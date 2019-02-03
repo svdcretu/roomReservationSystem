@@ -1,0 +1,1 @@
+This folder is home for different resource files used be the project

@@ -9,9 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConferenceInterfaces\ConferenceInterfaces.csproj" />
-    <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj" />
-    <ProjectReference Include="..\ConferenceRepos\ConferenceRepos.csproj" />
     <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj" />
   </ItemGroup>
 
