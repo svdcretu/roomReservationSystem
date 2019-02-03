@@ -2,30 +2,36 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ConferenceModels;
 
 
 
 namespace ConferenceUtils
 {
-    public static class PrintUtils
+    public static class Utils
     {
 
         public static string GetPrintFileLocation()
         {
-            string repoName = "roomReservationSystem";
             string printFileName = "Printed.txt";
+            string printFilePath = GetResourcesLocation();
+            printFilePath = Path.Combine(printFilePath, printFileName);
+            return printFilePath;
+        }
 
-            //Location of file to print in
+        public static string GetResourcesLocation()
+        {
+            string repoName = "roomReservationSystem";
+            //Location of Resources 
             string currentDirPath = Directory.GetCurrentDirectory();
             string repositoryPath = currentDirPath.Substring(0, currentDirPath.IndexOf(repoName) + repoName.Length);
-            string printFilePath = Path.Combine(repositoryPath, "Resources", printFileName);
+            string printFilePath = Path.Combine(repositoryPath, "Resources");
             return printFilePath;
         }
 
 
         public static void PrintToFile(string text)
         {
-
             string printFilePath = GetPrintFileLocation();
 
             //Print text to file
@@ -52,6 +58,20 @@ namespace ConferenceUtils
         }
 
 
+        public static string readTextFile(string filename)
+        {
+
+            string streamFile = Path.Combine(GetResourcesLocation(), filename);
+            string content = String.Empty; ;
+
+            Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
+            using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
+            {
+                content = streamReader.ReadToEnd();
+            }
+            return content;
+        }
+
         public static string GetPrintOptionFromUser()
         {
 
@@ -66,7 +86,7 @@ namespace ConferenceUtils
             while (!validOptions.Keys.Contains(userInput))
             {
                 Console.WriteLine("Please choose an option (1/2) and press Enter to apply:");
-                Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value} ({PrintUtils.GetPrintFileLocation()})");
+                Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value} ({Utils.GetPrintFileLocation()})");
                 Console.WriteLine($"{validOptions.ElementAt(1).Key}:{validOptions.ElementAt(1).Value}");
 
                 userInput = Console.ReadLine().Trim();
@@ -77,7 +97,6 @@ namespace ConferenceUtils
                     var chosenOption = validOptions.SingleOrDefault(x => x.Key == userInput);
                     userInput = chosenOption.Key;
                 }
-
             }
             return userInput;
         }

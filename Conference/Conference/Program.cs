@@ -15,18 +15,19 @@ namespace Conference
         static void Main(string[] args)
         {
             //Get the print option from user
-            string printOption = PrintUtils.GetPrintOptionFromUser();
+            string printOption = Utils.GetPrintOptionFromUser();
 
-            //UserServices userServices = new UserServices();
-            //PrintUsers printUsers = new PrintUsers();
-            //printUsers.Print(userServices.GetUsersAsString(), printOption);
-            //Console.ReadKey();
-
-
-            RoomServices roomServices = new RoomServices();
-            PrintRooms printRooms = new PrintRooms();
-            printRooms.Print(roomServices.GetRoomsAsString(), printOption);
+            UserServices userservices = new UserServices();
+            PrintUsers printusers = new PrintUsers();
+            printusers.Print(userservices.GetUsersAsString(), printOption);
             Console.ReadKey();
+
+
+            //RoomServices roomServices = new RoomServices(ConnectionType.File);
+            //PrintRooms printRooms = new PrintRooms();
+            //string rooms = roomServices.GetRooms(ConnectionType.Hardcoded);
+            //printRooms.Print(rooms, printOption);
+            //Console.ReadKey();
 
 
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using ConferenceRepos;
+﻿using ConferenceRepos;
 
 namespace ConferenceModels
 {
@@ -7,7 +6,7 @@ namespace ConferenceModels
     {
 
         private RoomRepository roomRepository;
-        public List<ConferenceRoom> RecordList;
+        public string RecordList;
 
         //By default takes hardcoded repository
         public Connect()
@@ -15,7 +14,6 @@ namespace ConferenceModels
             roomRepository = new RoomRepository();
             RecordList = roomRepository.GetRoomsHardcodedRepo();
         }
-
 
         public Connect(ConnectionType connectionType)
         {

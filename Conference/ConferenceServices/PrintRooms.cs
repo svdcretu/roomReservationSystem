@@ -1,6 +1,8 @@
 ﻿using System;
 using ConferenceInterfaces;
 using ConferenceUtils;
+using ConferenceModels;
+using System.Collections.Generic;
 
 namespace ConferenceServices
 {
@@ -12,16 +14,15 @@ namespace ConferenceServices
             switch (destination)
             {
                 case "1":
-                    PrintUtils.PrintToFile(text);
+                    Utils.PrintToFile(text);
                     break;
                 case "2":
                 default:
                     Console.WriteLine(text);
                     break;
             }
-
-
         }
+
 
     }
 }

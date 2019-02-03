@@ -13,7 +13,7 @@ namespace ConferenceServices
             switch (destination)
             {
                 case "1":
-                    PrintUtils.PrintToFile(text);
+                    Utils.PrintToFile(text);
                     break;
                 case "2":
                 default:
@@ -21,7 +21,8 @@ namespace ConferenceServices
                     break;
             }
 
-
         }
+
+
     }
 }
