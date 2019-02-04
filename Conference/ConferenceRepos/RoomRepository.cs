@@ -11,9 +11,8 @@ namespace ConferenceRepos
         private List<Equipment> equipmentList;
 
 
-        public string GetRoomsHardcodedRepo()
+        public List<ConferenceRoom> GetRoomList()
         {
-            var res = "";
             roomList = new List<ConferenceRoom>();
             equipmentList = new List<Equipment>();
             roomList.Add(
@@ -25,6 +24,13 @@ namespace ConferenceRepos
                 new ConferenceRoom()
                 { RoomId = 1, Name = "Rockefeller Hardcoded", Floor = 1, MapUrl = "url3", Description = "Rockefeller", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Jabra } });
 
+            return roomList;
+        }
+
+        public string GetRoomsHardcodedRepo()
+        {
+            var res = "";
+            roomList = GetRoomList();
             foreach (ConferenceRoom room in roomList)
             {
                 res += String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
