@@ -11,7 +11,7 @@ namespace ConferenceRepos
         private List<Equipment> equipmentList;
 
 
-        public List<ConferenceRoom> GetRoomList()
+        public List<ConferenceRoom> GetRoomsHardcodedList()
         {
             roomList = new List<ConferenceRoom>();
             equipmentList = new List<Equipment>();
@@ -27,10 +27,10 @@ namespace ConferenceRepos
             return roomList;
         }
 
-        public string GetRoomsHardcodedRepo()
+        public string GetRoomsHardcodedListAsString()
         {
             var res = "";
-            roomList = GetRoomList();
+            roomList = GetRoomsHardcodedList();
             foreach (ConferenceRoom room in roomList)
             {
                 res += String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
@@ -38,9 +38,16 @@ namespace ConferenceRepos
             return res;
         }
 
-        public string GetRoomsFileRepo()
+        public string GetRoomsFileListAsString()
         {
-            string roomList = Utils.readTextFile("RoomsRepo.txt");
+            string roomListAsString = Utils.readTextFile("RoomsRepo.txt");
+            return roomListAsString;
+        }
+
+
+        public List<ConferenceRoom> GetRoomsFileList()
+        {
+            roomList = Utils.readTextFileToConferenceRoom("RoomsRepo.txt");
             return roomList;
         }
 

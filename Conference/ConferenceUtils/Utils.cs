@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using ConferenceModels;
 
 
@@ -69,8 +70,42 @@ namespace ConferenceUtils
             {
                 content = streamReader.ReadToEnd();
             }
+            stream.Close();
             return content;
         }
+
+        public static List<ConferenceRoom> readTextFileToConferenceRoom(string filename)
+        {
+            List<ConferenceRoom> roomList = new List<ConferenceRoom>();
+            string streamFile = Path.Combine(GetResourcesLocation(), filename);
+            string content = String.Empty;
+            string currentLine = string.Empty;
+            char delimiter = ',';
+
+            List<ConferenceRoom> inventory = new List<ConferenceRoom>();
+            List<Equipment> equipmentList = new List<Equipment>();
+
+            Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
+            using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
+
+                while ((currentLine = streamReader.ReadLine()) != null)
+                    {
+                    string[] parts = currentLine.Split(delimiter);
+                    roomList.Add(new ConferenceRoom()
+                    {
+                        RoomId = int.Parse(parts[0]),
+                        Name = parts[1],
+                        Description = parts[2],
+                        Site = parts[3]
+                    });
+                }
+                    return roomList;
+        }
+
+
+
+
+
 
         public static string GetPrintOptionFromUser()
         {

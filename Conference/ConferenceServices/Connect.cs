@@ -7,14 +7,15 @@ namespace ConferenceModels
     {
 
         private RoomRepository roomRepository;
-        public string RecordList;
+        public string RoomListAsString;
         public List<ConferenceRoom> RoomList;
 
         //By default returns List of ConferenceRoom
         public Connect()
         {
             roomRepository = new RoomRepository();
-            RoomList = roomRepository.GetRoomList();
+            RoomListAsString = roomRepository.GetRoomsFileListAsString();
+            RoomList = roomRepository.GetRoomsHardcodedList();
         }
 
         public Connect(ConnectionType connectionType)
@@ -23,11 +24,13 @@ namespace ConferenceModels
             switch (connectionType)
             {
                 case ConnectionType.File:
-                    RecordList = roomRepository.GetRoomsFileRepo();
+                    RoomListAsString = roomRepository.GetRoomsFileListAsString();
+                    RoomList = roomRepository.GetRoomsFileList();
                     break;
                 case ConnectionType.Hardcoded:
                 default:
-                    RecordList = roomRepository.GetRoomsHardcodedRepo();
+                    RoomListAsString = roomRepository.GetRoomsHardcodedListAsString();
+                    RoomList = roomRepository.GetRoomsHardcodedList();
                     break;
             }
         }

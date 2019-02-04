@@ -1,4 +1,3 @@
-Room Id: 1, Name: Manhattan Repo, Description: Manhattan, Site: Iasi, Equipments: Jabra
-Room Id: 2, Name: Times Square Repo, Description: Times Square, Site: Iasi, Equipments: Laptop, Monitor
-Room Id: 3, Name: Rockefeller Repo, Description: Rockefeller, Site: Iasi, Equipments: Jabra
-
+1, Manhattan Repo, Manhattan, Iasi, Jabra
+2, Times Square Repo, Times Square, Iasi, Laptop, Monitor
+3, Rockefeller Repo, Rockefeller, Iasi, Jabra

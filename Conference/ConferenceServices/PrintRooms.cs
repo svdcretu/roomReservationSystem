@@ -11,15 +11,19 @@ namespace ConferenceServices
 
         public void Print(string text, string destination)
         {
-            switch (destination)
+            if (!String.IsNullOrEmpty(text))
             {
-                case "1":
-                    Utils.PrintToFile(text);
-                    break;
-                case "2":
-                default:
-                    Console.WriteLine(text);
-                    break;
+                switch (destination)
+                {
+                    case "1":
+                        Utils.PrintToFile(text);
+                        break;
+                    case "2":
+                    default:
+                        Console.WriteLine(text);
+                        break;
+                }
+
             }
         }
 

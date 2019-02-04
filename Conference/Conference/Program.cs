@@ -27,11 +27,11 @@ namespace Conference
             ConnectionType connectionType = ConnectionType.Hardcoded;
 
             RoomServices roomServices = new RoomServices(connectionType);
-            string rooms = roomServices.GetRooms(connectionType);
+
+            string rooms = roomServices.GetRoomsAsString(connectionType);
             printRooms.Print(rooms, printOption);
 
-            //RoomServices roomServices1 = new RoomServices();
-            //string rooms1 = roomServices1.GetRoomAsString(1);
+            //string rooms1 = roomServices.GetRoomAsString(connectionType, 1);
             //printRooms.Print(rooms1, printOption);
 
             Console.ReadKey();

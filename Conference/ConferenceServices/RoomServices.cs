@@ -8,7 +8,7 @@ namespace ConferenceServices
 {
     public class RoomServices
     {
-        private string recordList;
+        private string roomListAsString;
         private List<ConferenceRoom> roomList;
         private Connect connection;
 
@@ -23,25 +23,25 @@ namespace ConferenceServices
         }
 
 
-        public string GetRooms(ConnectionType connectionType)
+        public string GetRoomsAsString(ConnectionType connectionType)
         {
-            recordList = connection.RecordList;
-            return recordList;
+            roomListAsString = connection.RoomListAsString;
+            return roomListAsString;
 
         }
 
 
 
-        public string GetRoomAsString(int roomId)
+        public string GetRoomAsString(ConnectionType connectionType,int roomId)
         {
             string result = "";
             ConferenceRoom room = null;
-
+            roomList = connection.RoomList;
             try
-            {
-                roomList = connection.RoomList;
+            {               
                 room = roomList.SingleOrDefault(x => x.RoomId == roomId);
-                result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
+                result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}");
+                //, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}
             }
 
             catch (InvalidOperationException)
