@@ -6,9 +6,10 @@ namespace ConferenceModels
     public class Connect
     {
 
-        private RoomRepository roomRepository;
-        public string RoomListAsString;
+        private RoomRepository roomRepository;        
         public List<ConferenceRoom> RoomList;
+        public string RoomListAsString { get; private set; }
+        public ConnectionType ConnectionType { get; set; }
 
         //By default returns List of ConferenceRoom
         public Connect()
@@ -20,8 +21,9 @@ namespace ConferenceModels
 
         public Connect(ConnectionType connectionType)
         {
+            this.ConnectionType = connectionType;
             roomRepository = new RoomRepository();
-            switch (connectionType)
+            switch (this.ConnectionType)
             {
                 case ConnectionType.File:
                     RoomListAsString = roomRepository.GetRoomsFileListAsString();
@@ -33,6 +35,23 @@ namespace ConferenceModels
                     RoomList = roomRepository.GetRoomsHardcodedList();
                     break;
             }
+        }
+
+        public string GetRoomsFileListAsString(ConnectionType connectionType)
+        {
+            string result;
+            switch (connectionType)
+            {
+                case ConnectionType.File:
+                    result = roomRepository.GetRoomsFileListAsString();
+                    break;
+                case ConnectionType.Hardcoded:
+                default:
+                    result = roomRepository.GetRoomsHardcodedListAsString();                    
+                    break;
+            }
+
+            return result;
         }
 
 

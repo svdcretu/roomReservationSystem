@@ -19,13 +19,18 @@ namespace ConferenceServices
 
         public RoomServices(ConnectionType connectionType)
         {
+            connectionType = ConnectionType.File;
             connection = new Connect(connectionType);
+            var s = connection.RoomListAsString;
+            var list = connection.RoomList;
         }
 
 
         public string GetRoomsAsString(ConnectionType connectionType)
         {
-            roomListAsString = connection.RoomListAsString;
+            connectionType = ConnectionType.Hardcoded;
+            connection.ConnectionType = connectionType;
+            roomListAsString = connection.GetRoomsFileListAsString(connectionType);
             return roomListAsString;
 
         }

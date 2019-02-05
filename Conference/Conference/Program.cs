@@ -19,8 +19,8 @@ namespace Conference
             string printOption = Utils.GetPrintOptionFromUser();
 
             PrintRooms printRooms = new PrintRooms();
-            RoomServices roomServices = new RoomServices(connectionType);
-            string rooms = roomServices.GetRoomsAsString(connectionType);
+            RoomServices roomServices = new RoomServices(ConnectionType.File);
+            string rooms = roomServices.GetRoomsAsString(ConnectionType.Hardcoded);
             printRooms.Print(rooms, printOption);
 
             //string rooms1 = roomServices.GetRoomAsString(connectionType, 1);
