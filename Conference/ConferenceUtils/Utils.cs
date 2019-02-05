@@ -20,6 +20,16 @@ namespace ConferenceUtils
             return printFilePath;
         }
 
+
+        public static string GetRoomsRepoLocation()
+        {
+            string printFileName = "RoomsRepo.txt";
+            string printFilePath = GetResourcesLocation();
+            printFilePath = Path.Combine(printFilePath, printFileName);
+            return printFilePath;
+        }
+
+
         public static string GetResourcesLocation()
         {
             string repoName = "roomReservationSystem";
@@ -89,7 +99,7 @@ namespace ConferenceUtils
             using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
 
                 while ((currentLine = streamReader.ReadLine()) != null)
-                    {
+                {
                     string[] parts = currentLine.Split(delimiter);
                     roomList.Add(new ConferenceRoom()
                     {
@@ -99,29 +109,19 @@ namespace ConferenceUtils
                         Site = parts[3]
                     });
                 }
-                    return roomList;
+            return roomList;
         }
 
 
 
-
-
-
-        public static string GetPrintOptionFromUser()
+        public static string GetOptionsFromUser(Dictionary<string, string> validOptions, string fileLocation)
         {
-
-            Dictionary<string, string> validOptions = new Dictionary<string, string>()
-            {
-             { "1", "Print to File"},
-             { "2", "Print to Console" }
-            };
-
             string userInput = "";
             bool invalidInput = true;
             while (!validOptions.Keys.Contains(userInput))
             {
                 Console.WriteLine("Please choose an option (1/2) and press Enter to apply:");
-                Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value} ({Utils.GetPrintFileLocation()})");
+                Console.WriteLine($"{validOptions.ElementAt(0).Key}:{validOptions.ElementAt(0).Value} ({fileLocation})");
                 Console.WriteLine($"{validOptions.ElementAt(1).Key}:{validOptions.ElementAt(1).Value}");
 
                 userInput = Console.ReadLine().Trim();
@@ -135,6 +135,32 @@ namespace ConferenceUtils
             }
             return userInput;
         }
+
+
+        public static string GetPrintOptionFromUser()
+        {
+            string fileLocation = Utils.GetPrintFileLocation();
+            Dictionary<string, string> validOptions = new Dictionary<string, string>()
+            {
+             { "1", "Print to File"},
+             { "2", "Print to Console" }
+            };
+            return GetOptionsFromUser(validOptions, fileLocation);
+        }
+
+
+        public static string GetRoomsRepositoryOptionFromUser()
+        {
+            string fileLocation = Utils.GetRoomsRepoLocation();
+
+            Dictionary<string, string> validOptions = new Dictionary<string, string>()
+            {
+             { "1", "Read from File"},
+             { "2", "Read hardcoded values" }
+            };
+            return GetOptionsFromUser(validOptions, fileLocation);
+        }
+
 
 
     }
