@@ -40,8 +40,7 @@ namespace ConferenceServices
             try
             {               
                 room = roomList.SingleOrDefault(x => x.RoomId == roomId);
-                result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}");
-                //, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}
+                result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site} , Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
             }
 
             catch (InvalidOperationException)

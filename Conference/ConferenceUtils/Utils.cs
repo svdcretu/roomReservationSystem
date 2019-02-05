@@ -1,9 +1,8 @@
-﻿using System;
+﻿using ConferenceModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using ConferenceModels;
 
 
 
@@ -84,7 +83,7 @@ namespace ConferenceUtils
             return content;
         }
 
-        public static List<ConferenceRoom> readTextFileToConferenceRoom(string filename)
+        public static List<ConferenceRoom> readTextFileToConferenceRoomObject(string filename)
         {
             List<ConferenceRoom> roomList = new List<ConferenceRoom>();
             string streamFile = Path.Combine(GetResourcesLocation(), filename);
@@ -101,12 +100,21 @@ namespace ConferenceUtils
                 while ((currentLine = streamReader.ReadLine()) != null)
                 {
                     string[] parts = currentLine.Split(delimiter);
+
+                    List<Equipment> equipments = new List<Equipment>();
+                    for (int i = 4; i < parts.Length; i++)
+                    {
+                        Equipment equipment = (Equipment)Enum.Parse(typeof(Equipment), parts[i]);
+                        equipments.Add(equipment);
+                    }
+
                     roomList.Add(new ConferenceRoom()
                     {
                         RoomId = int.Parse(parts[0]),
                         Name = parts[1],
                         Description = parts[2],
-                        Site = parts[3]
+                        Site = parts[3],
+                        EquipmentList = equipments
                     });
                 }
             return roomList;

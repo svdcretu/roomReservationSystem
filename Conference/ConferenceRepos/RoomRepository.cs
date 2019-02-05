@@ -47,7 +47,7 @@ namespace ConferenceRepos
 
         public List<ConferenceRoom> GetRoomsFileList()
         {
-            roomList = Utils.readTextFileToConferenceRoom("RoomsRepo.txt");
+            roomList = Utils.readTextFileToConferenceRoomObject("RoomsRepo.txt");
             return roomList;
         }
 
