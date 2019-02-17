@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceModels;
+using ConferenceInterfaces;
 
 
 namespace ConferenceServices
 {
-    public class RoomServices
+    public class RoomServices : IProcess
     {
         private string roomListAsString;
         private List<ConferenceRoom> roomList;
         private Connect connection;
 
-        public RoomServices()
-        {
-            connection = new Connect();
-        }
+        //public RoomServices()
+        //{
+        //    connection = new Connect();
+        //}
 
-        public RoomServices(ConnectionType connectionType)
-        {
-            connection = new Connect(connectionType);
-        }
+        //public RoomServices(ConnectionType connectionType)
+        //{
+        //    connection = new Connect(connectionType);
+        //}
 
 
         public string GetRoomsAsString(ConnectionType connectionType)
@@ -29,8 +30,6 @@ namespace ConferenceServices
             return roomListAsString;
 
         }
-
-
 
         public string GetRoomAsString(ConnectionType connectionType,int roomId)
         {
@@ -57,5 +56,15 @@ namespace ConferenceServices
         }
 
 
+        public void Open()
+        {
+
+            Console.WriteLine("List of Rooms");
+        }
+
+        public void PrintTo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

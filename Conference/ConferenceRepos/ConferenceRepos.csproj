@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomRepository.cs" />
     <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConferenceInterfaces\ConferenceInterfaces.csproj">
+      <Project>{bc2afdee-6b11-454a-bd28-ada92c82c6f0}</Project>
+      <Name>ConferenceInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj">
       <Project>{ea36b6c9-9bc9-43f6-932a-1e17f9826344}</Project>
       <Name>ConferenceModels</Name>
