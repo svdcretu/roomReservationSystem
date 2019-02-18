@@ -1,6 +1,4 @@
-﻿using ConferenceRepos;
-using System.Collections.Generic;
-using ConferenceInterfaces;
+﻿using ConferenceInterfaces;
 
 namespace ConferenceModels
 {
