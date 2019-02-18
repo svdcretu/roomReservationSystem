@@ -1,5 +1,5 @@
-Id: 0, Name: DefaultUser, Email: defaultemail@gmail.com
-Id: 1, Name: Vasile Popa, Email: vasile.popa@gmail.com
-Id: 2, Name: Anca Marcu, Email: ancamarcu@yahoo.com
-Id: 3, Name: Sorin Popovici, Email: sorinp@gmail.com
+0, DefaultUser Repo, defaultemail@gmail.com
+1, Vasile Popa Repo, vasile.popa@gmail.com
+2, Anca Marcu Repo, ancamarcu@yahoo.com
+3, Sorin Popovici Repo, sorinp@gmail.com
 

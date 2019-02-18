@@ -11,24 +11,23 @@ namespace Conference
         static void Main(string[] args)
         {
 
-            //Get repository option from user
-            string repositoryOption = Utils.GetRoomsRepositoryOptionFromUser();
-            ConnectionType connectionType = (repositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
+            //Get room repository option from user
+            //string roomRepositoryOption = Utils.GetRoomsRepositoryOptionFromUser();
+            //ConnectionType roomConnectionType = (roomRepositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
+
+            //Get user repository option from user
+            string userRepositoryOption = Utils.GetUsersRepositoryOptionFromUser();
+            ConnectionType userConnectionType = (userRepositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
 
             //Get the print option from user
             string printOption = Utils.GetPrintOptionFromUser();
 
-           // PrintRooms printRooms = new PrintRooms();
-            RoomServices roomServices = new RoomServices(connectionType);
-            roomServices.Print(printOption);
+            //RoomServices roomServices = new RoomServices(roomConnectionType);
+            //roomServices.Print(printOption);
 
+            UserServices userServices = new UserServices(userConnectionType);
+            userServices.Print(printOption);
 
-
-           // string rooms = roomServices.GetRoomsAsString(connectionType);
-           // printRooms.Print(rooms, printOption);
-
-            //string rooms1 = roomServices.GetRoomAsString(connectionType, 1);
-            //printRooms.Print(rooms1, printOption);
 
             Console.ReadKey();
 

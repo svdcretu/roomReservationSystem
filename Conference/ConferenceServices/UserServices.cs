@@ -1,32 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConferenceInterfaces;
 using ConferenceModels;
-using ConferenceRepos;
-using System.Linq;
+using ConferenceUtils;
 
 
 namespace ConferenceServices
 {
-    public class UserServices
+    public class UserServices : IProcess
     {
         private List<User> userList;
-        UserRepository userRepository;
+        private GenericRepo _userRepository;
+        private string _userListAsString;
 
-        public UserServices()
+
+        public UserServices(ConnectionType connectionType)
         {
-            userRepository = new UserRepository();
+            _userRepository = new GenericRepo(connectionType, this);
+            _userListAsString = _userRepository.ConnectToRepo(connectionType);
+
         }
 
-        public List<User> GetUsers()
+        public string GetUsersHardcodedListAsString()
         {
-            userList = userRepository.GetUsers();
-            return userList;
-        }
-
-        public String GetUsersAsString()
-        {
-            var res = "";
-            userList = userRepository.GetUsers();
+            string res = "";
+            List<User> userList = GetUsersHardcodedList();
             foreach (User user in userList)
             {
                 res += String.Format($"Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}") + System.Environment.NewLine;
@@ -34,43 +32,49 @@ namespace ConferenceServices
             return res;
         }
 
-        public User GetUser(int userId)
+        public List<User> GetUsersHardcodedList()
         {
-            User result = null;
-            try
-            {
-                userList = userRepository.GetUsers();
-                result = userList.Where(x => x.UserId == userId).First();
-            }
+            userList = new List<User>();
+            userList.Add(new User() { UserId = 0, Name = "Ana Popa Hardcoded", Email = "defaultemail@gmail.com" });
+            userList.Add(new User() { UserId = 1, Name = "Vasile Popa Hardcoded", Email = "vasile.popa@gmail.com" });
+            userList.Add(new User() { UserId = 2, Name = "Anca Marcu Hardcoded", Email = "ancamarcu@yahoo.com" });
+            userList.Add(new User() { UserId = 3, Name = "Sorin Popovici Hardcoded", Email = "sorinp@gmail.com" });
+            return userList;
 
-            catch (InvalidOperationException)
-            {
-                Console.WriteLine($"There is no user with id: {userId}.");
-            }
-
-            return result;
         }
 
-        public string GetUserAsString(int userId)
+        public List<User> GetUserListFromFile()
         {
-            string result = "";
-
-            try
-            {
-                userList = userRepository.GetUsers();
-                var user = userList.Single(x => x.UserId == userId);
-                result = string.Format($"Id: {user.UserId}, Name: {user.Name}, Email: {user.Email}");
-            }
-
-            catch (InvalidOperationException)
-            {
-                Console.WriteLine($"There is no user with id: {userId}.");
-            }
-            return result;
+            List<User> userList = Utils.readTextFileToUserObject("UsersRepo.txt");
+            return userList;
         }
 
+        public string GetUsersFileListAsString()
+        {
+            string userListAsString = Utils.readTextFile("UsersRepo.txt");
+            return userListAsString;
 
+        }
 
+        public string Connect(ConnectionType connectionType)
+        {
+            String UserListAsString;
+            switch (connectionType)
+            {
+                case ConnectionType.File:
+                    UserListAsString = GetUsersFileListAsString();
+                    break;
+                case ConnectionType.Hardcoded:
+                default:
+                    UserListAsString = GetUsersHardcodedListAsString();
+                    break;
+            }
+            return UserListAsString;
+        }
 
+        public void Print(string destination)
+        {
+            PrintEntity.Print(_userListAsString, destination);
+        }
     }
 }

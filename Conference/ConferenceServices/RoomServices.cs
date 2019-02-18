@@ -12,7 +12,7 @@ namespace ConferenceServices
     {
 
         private List<ConferenceRoom> roomList;
-        GenericRepo _roomRepository;
+        private GenericRepo _roomRepository;
         private List<Equipment> equipmentList;
         private string _roomListAsString;
 
@@ -28,8 +28,7 @@ namespace ConferenceServices
 
 
         public String Connect(ConnectionType connectionType)
-        {
-            {
+        {          
                 String RoomListAsString;
                 switch (connectionType)
                 {
@@ -42,7 +41,7 @@ namespace ConferenceServices
                         break;
                 }
                 return RoomListAsString;
-            }
+            
         }
 
 
@@ -78,7 +77,6 @@ namespace ConferenceServices
             string roomListAsString = Utils.readTextFile("RoomsRepo.txt");
             return roomListAsString;
         }
-
 
         public List<ConferenceRoom> GetRoomsListFromFile()
         {

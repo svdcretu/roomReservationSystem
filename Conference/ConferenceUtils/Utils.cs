@@ -28,6 +28,14 @@ namespace ConferenceUtils
             return printFilePath;
         }
 
+        public static string GetUsersRepoLocation()
+        {
+            string printFileName = "UsersRepo.txt";
+            string printFilePath = GetResourcesLocation();
+            printFilePath = Path.Combine(printFilePath, printFileName);
+            return printFilePath;
+        }
+
 
         public static string GetResourcesLocation()
         {
@@ -122,6 +130,34 @@ namespace ConferenceUtils
 
 
 
+        public static List<User> readTextFileToUserObject(string filename)
+        {
+            List<User> userList = new List<User>();
+            string streamFile = Path.Combine(GetResourcesLocation(), filename);
+            string content = String.Empty;
+            string currentLine = string.Empty;
+            char delimiter = ',';
+
+            List<User> inventory = new List<User>();
+
+            Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
+            using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
+
+                while ((currentLine = streamReader.ReadLine()) != null)
+                {
+                    string[] parts = currentLine.Split(delimiter);
+
+                    userList.Add(new User()
+                    {
+                        UserId = int.Parse(parts[0]),
+                        Name = parts[1],
+                        Email = parts[2],
+                    });
+                }
+            return userList;
+        }
+
+
         public static string GetOptionsFromUser(Dictionary<string, string> validOptions, string fileLocation)
         {
             string userInput = "";
@@ -160,6 +196,19 @@ namespace ConferenceUtils
         public static string GetRoomsRepositoryOptionFromUser()
         {
             string fileLocation = Utils.GetRoomsRepoLocation();
+
+            Dictionary<string, string> validOptions = new Dictionary<string, string>()
+            {
+             { "1", "Read from File"},
+             { "2", "Read hardcoded values" }
+            };
+            return GetOptionsFromUser(validOptions, fileLocation);
+        }
+
+
+        public static string GetUsersRepositoryOptionFromUser()
+        {
+            string fileLocation = Utils.GetUsersRepoLocation();
 
             Dictionary<string, string> validOptions = new Dictionary<string, string>()
             {
