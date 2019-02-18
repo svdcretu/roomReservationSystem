@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConferenceInterfaces;
-using ConferenceUtils;
+﻿using ConferenceUtils;
+using System;
 
 
 namespace ConferenceServices
 {
-    public class PrintEntity 
+    public class PrintEntity
     {
         public static void Print(string text, string destination)
         {
             if (!String.IsNullOrEmpty(text))
             {
-                Console.WriteLine("-------Printing data--------");
-                Console.WriteLine("");
+                Console.WriteLine("############### Printing data ###############");
                 switch (destination)
                 {
                     case "1":
@@ -27,7 +21,7 @@ namespace ConferenceServices
                         Console.WriteLine(text);
                         break;
                 }
-                Console.WriteLine("-------End printing--------");
+                Console.WriteLine("############### End printing ###############");
             }
         }
     }

@@ -10,32 +10,25 @@ namespace ConferenceUtils
 {
     public static class Utils
     {
+        private static string _printFileName = "Printed.txt";
+        private static string _roomsFileName = "RoomsRepo.txt";
+        private static string _usersFileName = "UsersRepo.txt";
 
         public static string GetPrintFileLocation()
         {
-            string printFileName = "Printed.txt";
-            string printFilePath = GetResourcesLocation();
-            printFilePath = Path.Combine(printFilePath, printFileName);
-            return printFilePath;
+            return Path.Combine(GetResourcesLocation(), _printFileName);
         }
 
 
         public static string GetRoomsRepoLocation()
         {
-            string printFileName = "RoomsRepo.txt";
-            string printFilePath = GetResourcesLocation();
-            printFilePath = Path.Combine(printFilePath, printFileName);
-            return printFilePath;
+            return Path.Combine(GetResourcesLocation(), _roomsFileName);
         }
 
         public static string GetUsersRepoLocation()
         {
-            string printFileName = "UsersRepo.txt";
-            string printFilePath = GetResourcesLocation();
-            printFilePath = Path.Combine(printFilePath, printFileName);
-            return printFilePath;
+            return Path.Combine(GetResourcesLocation(), _usersFileName);
         }
-
 
         public static string GetResourcesLocation()
         {
@@ -51,22 +44,25 @@ namespace ConferenceUtils
         public static void PrintToFile(string text)
         {
             string printFilePath = GetPrintFileLocation();
+            FileStream fs = null;
+            TextWriter writeFile = null;
 
-            //Print text to file
             try
             {
-                FileStream fs = new System.IO.FileStream(printFilePath, FileMode.Create);
-                System.IO.TextWriter writeFile = new StreamWriter(fs);
-                writeFile.WriteLine(text);
-                writeFile.Flush();
-                writeFile.Dispose();
-
-                string readFileText = File.ReadAllText(printFilePath).Replace("\r", string.Empty).Replace("\n", string.Empty);
-                if (readFileText.Length != 0)
+                using (fs = new System.IO.FileStream(printFilePath, FileMode.Create))
                 {
-                    Console.WriteLine("Successfully printed to file.");
+                    using (writeFile = new StreamWriter(fs))
+                    {
+                        writeFile.WriteLine(text);
+                        writeFile.Flush();
+                        writeFile.Dispose();
+                        string readFileText = File.ReadAllText(printFilePath).Replace("\r", string.Empty).Replace("\n", string.Empty);
+                        if (readFileText.Length != 0)
+                        {
+                            Console.WriteLine("Successfully printed to file.");
+                        }
+                    }
                 }
-
             }
             catch (IOException ex)
             {
@@ -75,19 +71,18 @@ namespace ConferenceUtils
 
         }
 
-
         public static string readTextFile(string filename)
         {
-
             string streamFile = Path.Combine(GetResourcesLocation(), filename);
             string content = String.Empty; ;
-
-            Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
-            using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
+            using (Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read))
             {
-                content = streamReader.ReadToEnd();
+                using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
+                {
+                    content = streamReader.ReadToEnd();
+                }
+                stream.Close();
             }
-            stream.Close();
             return content;
         }
 
