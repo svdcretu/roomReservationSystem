@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using ConferenceInterfaces;
+﻿using ConferenceInterfaces;
 using ConferenceModels;
+using ConferenceRepos;
 using ConferenceUtils;
+using System;
+using System.Collections.Generic;
 
 
 namespace ConferenceServices
@@ -40,7 +41,6 @@ namespace ConferenceServices
             userList.Add(new User() { UserId = 2, Name = "Anca Marcu Hardcoded", Email = "ancamarcu@yahoo.com" });
             userList.Add(new User() { UserId = 3, Name = "Sorin Popovici Hardcoded", Email = "sorinp@gmail.com" });
             return userList;
-
         }
 
         public List<User> GetUserListFromFile()

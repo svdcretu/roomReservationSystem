@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConferenceInterfaces;
+﻿using ConferenceInterfaces;
 using ConferenceModels;
+using System;
 
-namespace ConferenceServices
+namespace ConferenceRepos
 {
     public class GenericRepo : IGenericRepo
     {
 
-        ConnectionType _connectionType;
-        IProcess _entityService;
+        private ConnectionType _connectionType;
+        private IProcess _entityService;
 
         public GenericRepo(ConnectionType connectionType, IProcess entityService)
         {

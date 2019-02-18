@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using ConferenceInterfaces;
+﻿using ConferenceInterfaces;
 using ConferenceModels;
+using ConferenceRepos;
 using ConferenceUtils;
+using System;
+using System.Collections.Generic;
 
 
 namespace ConferenceServices
@@ -25,24 +26,22 @@ namespace ConferenceServices
         }
 
 
-
         public String Connect(ConnectionType connectionType)
-        {          
-                String RoomListAsString;
-                switch (connectionType)
-                {
-                    case ConnectionType.File:
-                        RoomListAsString = GetRoomsFileListAsString();
-                        break;
-                    case ConnectionType.Hardcoded:
-                    default:
-                        RoomListAsString = GetRoomsHardcodedListAsString();
-                        break;
-                }
-                return RoomListAsString;
-            
-        }
+        {
+            String RoomListAsString;
+            switch (connectionType)
+            {
+                case ConnectionType.File:
+                    RoomListAsString = GetRoomsFileListAsString();
+                    break;
+                case ConnectionType.Hardcoded:
+                default:
+                    RoomListAsString = GetRoomsHardcodedListAsString();
+                    break;
+            }
+            return RoomListAsString;
 
+        }
 
         public List<ConferenceRoom> GetRoomsListHardcoded()
         {
