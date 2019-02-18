@@ -1,77 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using ConferenceModels;
 using ConferenceInterfaces;
+using ConferenceModels;
 using ConferenceRepos;
+using ConferenceUtils;
 
 
 namespace ConferenceServices
 {
     public class RoomServices : IProcess
     {
-        private string roomListAsString;
-        private List<ConferenceRoom> roomList;
-        private Connect connection;
-        RoomRepository _roomRepository;
 
-        //public RoomServices()
-        //{
-        //    connection = new Connect();
-        //}
+        private List<ConferenceRoom> roomList;
+        RoomRepository _roomRepository;
+        private List<Equipment> equipmentList;
+
+
 
         public RoomServices(ConnectionType connectionType)
         {
-            _roomRepository = new RoomRepository(connectionType);
+            _roomRepository = new RoomRepository(connectionType, this);
+            _roomRepository.ConnectToRepo(connectionType);
 
         }
-
-
-        //public string GetRoomsAsString(ConnectionType connectionType)
-        //{
-        //    roomListAsString = connection.RoomListAsString;
-        //    return roomListAsString;
-
-        //}
-
-        //public string GetRoomAsString(ConnectionType connectionType,int roomId)
-        //{
-        //    string result = "";
-        //    ConferenceRoom room = null;
-        //    roomList = connection.RoomList;
-        //    try
-        //    {               
-        //        room = roomList.SingleOrDefault(x => x.RoomId == roomId);
-        //        result = String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site} , Equipments: {string.Join(", ", room.EquipmentList.ToArray())}");
-        //    }
-
-        //    catch (InvalidOperationException)
-        //    {
-        //        Console.WriteLine($"There is no unique room with id: {roomId}.");
-        //    }
-
-        //    catch (NullReferenceException)
-        //    {
-        //        Console.WriteLine($"There is no room with id: {roomId}.");
-        //    }
-
-        //    return result;
-        //}
-
 
         public void PrintTo()
         {
             throw new NotImplementedException();
         }
 
-        public void Connect(ConnectionType connectionType)
+        public String Connect(ConnectionType connectionType)
         {
-            throw new NotImplementedException();
+            {
+                String RoomListAsString;
+                switch (connectionType)
+                {
+                    case ConnectionType.File:
+                        RoomListAsString = GetRoomsFileListAsString();
+                        break;
+                    case ConnectionType.Hardcoded:
+                    default:
+                        RoomListAsString = GetRoomsHardcodedListAsString();
+                        break;
+                }
+                return RoomListAsString;
+            }
         }
 
-        string IProcess.Connect(ConnectionType connectionType)
+
+        public List<ConferenceRoom> GetRoomsListHardcoded()
         {
-            throw new NotImplementedException();
+            roomList = new List<ConferenceRoom>();
+            equipmentList = new List<Equipment>();
+            roomList.Add(
+                new ConferenceRoom()
+                { RoomId = 1, Name = "Manhattan Hardcoded", Floor = 1, MapUrl = "url1", Description = "Manhattan", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Jabra } });
+            roomList.Add(
+                  new ConferenceRoom() { RoomId = 2, Name = "Times Square Hardcoded", Floor = 1, MapUrl = "url2", Description = "Times Square", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Laptop, Equipment.Monitor } });
+            roomList.Add(
+                new ConferenceRoom()
+                { RoomId = 1, Name = "Rockefeller Hardcoded", Floor = 1, MapUrl = "url3", Description = "Rockefeller", Site = "Iasi", Latitude = 47.154614, Longitude = 27.579835, EquipmentList = new List<Equipment>() { Equipment.Jabra } });
+
+            return roomList;
         }
+
+        public string GetRoomsHardcodedListAsString()
+        {
+            var res = "";
+            roomList = GetRoomsListHardcoded();
+            foreach (ConferenceRoom room in roomList)
+            {
+                res += String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
+            }
+            return res;
+        }
+
+        public string GetRoomsFileListAsString()
+        {
+            string roomListAsString = Utils.readTextFile("RoomsRepo.txt");
+            return roomListAsString;
+        }
+
+
+        public List<ConferenceRoom> GetRoomsListFromFile()
+        {
+            roomList = Utils.readTextFileToConferenceRoomObject("RoomsRepo.txt");
+            return roomList;
+        }
+
     }
 }
