@@ -21,10 +21,10 @@ namespace ConferenceServices
 
         public void OpenThings()
         {
-            foreach (IProcess item in _listToProcess)
-            {
-                item.Open();
-            }
+            //foreach (IProcess item in _listToProcess)
+            //{
+            //    item.Connect();
+            //}
         }
 
         public void PrintThings()

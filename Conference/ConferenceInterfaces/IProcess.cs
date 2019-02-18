@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConferenceModels;
 
 namespace ConferenceInterfaces
 {
     public interface IProcess
     {
-        void Open();
+        String Connect(ConnectionType connectionType);
 
         void PrintTo();
-
     }
 }

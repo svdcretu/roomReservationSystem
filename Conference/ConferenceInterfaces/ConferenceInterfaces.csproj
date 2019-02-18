@@ -47,5 +47,11 @@
     <Compile Include="IProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj">
+      <Project>{ea36b6c9-9bc9-43f6-932a-1e17f9826344}</Project>
+      <Name>ConferenceModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

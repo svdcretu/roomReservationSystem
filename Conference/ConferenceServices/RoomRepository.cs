@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using ConferenceModels;
 using ConferenceUtils;
+using ConferenceInterfaces;
 
 namespace ConferenceRepos
 {
-    public class RoomRepository
+    public class RoomRepository : IProcess
     {
         private List<ConferenceRoom> roomList;
         private List<Equipment> equipmentList;
+        ConnectionType _connectionType;
+        public List<ConferenceRoom> RoomList;
+
+
+        public RoomRepository(ConnectionType connectionType)
+        {
+            _connectionType = connectionType;
+            this.Connect(_connectionType);
+        }
 
 
         public List<ConferenceRoom> GetRoomsHardcodedList()
@@ -51,5 +61,30 @@ namespace ConferenceRepos
             return roomList;
         }
 
+        public String Connect(ConnectionType connectionType)
+        {
+            String RoomListAsString;
+            switch (connectionType)
+            {
+                case ConnectionType.File:
+                    RoomListAsString = GetRoomsFileListAsString();
+                    //RoomList = GetRoomsFileList();
+                    break;
+                case ConnectionType.Hardcoded:
+                default:
+                    RoomListAsString = GetRoomsHardcodedListAsString();
+                    //RoomList = GetRoomsHardcodedList();
+                    break;
+            }
+            return RoomListAsString;
+
+        }
+
+        public void PrintTo()
+        {
+            throw new NotImplementedException();
+        }
+
     }
-}
+       
+    }

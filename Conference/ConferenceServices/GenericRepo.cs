@@ -12,8 +12,8 @@ namespace ConferenceServices
         public List<IProcess> GetThingsToProcess()
         {
             List<IProcess> listToProcess = new List<IProcess>();
-            RoomServices roomServices = new RoomServices();
-            listToProcess.Add(roomServices);
+            //RoomServices roomServices = new RoomServices();
+            //listToProcess.Add(roomServices);
 
             return listToProcess;
         }
