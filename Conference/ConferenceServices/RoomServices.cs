@@ -12,22 +12,20 @@ namespace ConferenceServices
     {
 
         private List<ConferenceRoom> roomList;
-        RoomRepository _roomRepository;
+        GenericRepo _roomRepository;
         private List<Equipment> equipmentList;
+        private string _roomListAsString;
 
 
 
         public RoomServices(ConnectionType connectionType)
         {
-            _roomRepository = new RoomRepository(connectionType, this);
-            _roomRepository.ConnectToRepo(connectionType);
+            _roomRepository = new GenericRepo(connectionType, this);
+            _roomListAsString = _roomRepository.ConnectToRepo(connectionType);
 
         }
 
-        public void PrintTo()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public String Connect(ConnectionType connectionType)
         {
@@ -88,5 +86,9 @@ namespace ConferenceServices
             return roomList;
         }
 
+        public void Print(string destination)
+        {
+            PrintEntity.Print(_roomListAsString, destination);
+        }
     }
 }

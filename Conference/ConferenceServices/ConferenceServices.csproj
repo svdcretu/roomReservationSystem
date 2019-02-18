@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connect.cs" />
+    <Compile Include="GenericRepo.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="PrintRooms.cs" />
     <Compile Include="PrintUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace ConferenceInterfaces
     public interface IProcess
     {
         String Connect(ConnectionType connectionType);
+        void Print(string destination);
 
-        void PrintTo();
     }
 }

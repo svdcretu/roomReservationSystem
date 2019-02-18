@@ -4,18 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConferenceInterfaces;
+using ConferenceModels;
 
 namespace ConferenceServices
 {
     public class GenericRepo : IGenericRepo
     {
-        public List<IProcess> GetThingsToProcess()
-        {
-            List<IProcess> listToProcess = new List<IProcess>();
-            //RoomServices roomServices = new RoomServices();
-            //listToProcess.Add(roomServices);
 
-            return listToProcess;
+        ConnectionType _connectionType;
+        IProcess _entityService;
+
+        public GenericRepo(ConnectionType connectionType, IProcess entityService)
+        {
+            _connectionType = connectionType;
+            _entityService = entityService;
+        }
+
+        public string ConnectToRepo(ConnectionType connectionType)
+        {
+            String results = _entityService.Connect(connectionType);
+            return results;
         }
     }
 }

@@ -20,6 +20,10 @@ namespace Conference
 
            // PrintRooms printRooms = new PrintRooms();
             RoomServices roomServices = new RoomServices(connectionType);
+            roomServices.Print(printOption);
+
+
+
            // string rooms = roomServices.GetRoomsAsString(connectionType);
            // printRooms.Print(rooms, printOption);
 

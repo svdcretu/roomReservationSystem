@@ -25,10 +25,6 @@ namespace ConferenceRepos
             return results;
         }
 
-        public void PrintTo()
-        {
-            throw new NotImplementedException();
-        }
 
     }
        
