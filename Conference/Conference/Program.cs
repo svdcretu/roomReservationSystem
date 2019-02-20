@@ -3,6 +3,12 @@ using ConferenceServices;
 using ConferenceUtils;
 using System;
 
+using BusinesServices.Contracts;
+using BusinesServices.DisplyInfo;
+using BusinesServices.UserBusiness;
+
+using ConferenceRepository.Contracts;
+using ConferenceRepository.UserRepository;
 
 namespace Conference
 {
@@ -11,6 +17,10 @@ namespace Conference
         static void Main(string[] args)
         {
 
+            IBusinesService<User> userService;
+            IDisplayService<User> userDisplayService = new DisplayUserService();
+            IRepository<User> userRepository;
+
             //Get room repository option from user
             //string roomRepositoryOption = Utils.GetRoomsRepositoryOptionFromUser();
             //ConnectionType roomConnectionType = (roomRepositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
@@ -18,6 +28,23 @@ namespace Conference
             //Get user repository option from user
             string userRepositoryOption = Utils.GetUsersRepositoryOptionFromUser();
             ConnectionType userConnectionType = (userRepositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
+
+            if (userConnectionType == ConnectionType.Hardcoded)
+            {
+                userRepository = new HardCodedUserRepository();
+            }
+            else
+            {
+                userRepository = new FileBaseUserRepository();
+            }
+
+            userService = new UserService(userRepository, userDisplayService);
+
+            var userList = userService.GetData();
+            var user = userService.GetDataById(15);
+
+            userService.Display(userList);
+            userService.Display(user);
 
             //Get the print option from user
             string printOption = Utils.GetPrintOptionFromUser();

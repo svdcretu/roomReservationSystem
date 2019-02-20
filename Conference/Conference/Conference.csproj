@@ -137,9 +137,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinesServices\BusinesServices.csproj">
+      <Project>{427cc8d7-ea4e-4338-8f9f-b1d9997f8eac}</Project>
+      <Name>BusinesServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj">
       <Project>{a03b0970-7b54-4ec7-994b-6e7cf504334e}</Project>
       <Name>ConferenceModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConferenceRepository\ConferenceRepository.csproj">
+      <Project>{c4856fe6-56a1-4c40-b761-ee7858e26639}</Project>
+      <Name>ConferenceRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\ConferenceServices\ConferenceServices.csproj">
       <Project>{b5991969-481a-44b5-b55f-8ea9ba18dccb}</Project>
