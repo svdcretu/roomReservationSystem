@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using ConferenceModels;
+using ConferenceUtils;
 
 namespace ConferenceRepository.UserRepository
 {
@@ -9,12 +8,14 @@ namespace ConferenceRepository.UserRepository
     {
         public override IList<User> GetData()
         {
-            throw new NotImplementedException();
+            List<User> userList = Utils.readTextFileToUserObject("UsersRepo.txt");
+            return userList;
         }
 
         public new User GetDataById(int id)
         {
-            throw new NotImplementedException();
+            User user = base.GetDataById(id);
+            return user;
         }
     }
 }
