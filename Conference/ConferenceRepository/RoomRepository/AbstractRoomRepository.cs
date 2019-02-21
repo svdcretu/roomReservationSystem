@@ -17,7 +17,7 @@ namespace ConferenceRepository.RoomRepository
             ConferenceRoom room = null;
             try
             {
-                room = roomList.SingleOrDefault(x => x.RoomId == id);
+                room = roomList.Single(x => x.RoomId == id);
             }
 
             catch (InvalidOperationException)

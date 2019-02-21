@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="Contracts\IBusinesService.cs" />
     <Compile Include="Contracts\IDisplayService.cs" />
-    <Compile Include="DisplayInfo\DisplayUserService.cs" />
+    <Compile Include="DisplayInfo\DisplayRoomServiceFile.cs" />
+    <Compile Include="DisplayInfo\DisplayRoomServiceConsole.cs" />
+    <Compile Include="DisplayInfo\DisplayUserServiceFile.cs" />
+    <Compile Include="DisplayInfo\DisplayUserServiceConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBusiness\RoomService.cs" />
     <Compile Include="UserBusiness\UserService.cs" />
@@ -56,6 +59,10 @@
     <ProjectReference Include="..\ConferenceRepository\ConferenceRepository.csproj">
       <Project>{c4856fe6-56a1-4c40-b761-ee7858e26639}</Project>
       <Name>ConferenceRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj">
+      <Project>{0fb1ec57-77aa-4dea-9d8f-8d0c360a06b8}</Project>
+      <Name>ConferenceUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

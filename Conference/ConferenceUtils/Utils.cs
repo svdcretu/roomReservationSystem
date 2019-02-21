@@ -100,7 +100,7 @@ namespace ConferenceUtils
             Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
             using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
 
-                while ((currentLine = streamReader.ReadLine()) != null)
+                while (!String.IsNullOrEmpty(currentLine = streamReader.ReadLine()))
                 {
                     string[] parts = currentLine.Split(delimiter);
 
@@ -138,15 +138,15 @@ namespace ConferenceUtils
             Stream stream = new FileStream(@streamFile, FileMode.Open, FileAccess.Read);
             using (StreamReader streamReader = new StreamReader(stream, System.Text.Encoding.UTF8))
 
-                while ((currentLine = streamReader.ReadLine()) != null)
+                while (!String.IsNullOrEmpty(currentLine = streamReader.ReadLine()))
                 {
                     string[] parts = currentLine.Split(delimiter);
 
                     userList.Add(new User()
                     {
-                        UserId = int.Parse(parts[0]),
-                        Name = parts[1],
-                        Email = parts[2],
+                        UserId = int.Parse(parts[0].Trim()),
+                        Name = parts[1].Trim(),
+                        Email = parts[2].Trim(),
                     });
                 }
             return userList;

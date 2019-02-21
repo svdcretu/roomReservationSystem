@@ -4,7 +4,7 @@ using ConferenceUtils;
 
 namespace ConferenceRepository.RoomRepository
 {
-    class FileBaseRoomRepository : AbstractRoomRepository
+    public class FileBaseRoomRepository : AbstractRoomRepository
     {
         public override IList<ConferenceRoom> GetData()
         {

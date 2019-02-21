@@ -8,10 +8,10 @@ namespace ConferenceRepository.UserRepository
         public override IList<User> GetData()
         {
             IList<User> userList = new List<User>();
-            userList.Add(new User() { UserId = 0, Name = "DefaultUser", Email = "defaultemail@gmail.com" });
-            userList.Add(new User() { UserId = 1, Name = "Vasile Popa", Email = "vasile.popa@gmail.com" });
-            userList.Add(new User() { UserId = 2, Name = "Anca Marcu", Email = "ancamarcu@yahoo.com" });
-            userList.Add(new User() { UserId = 3, Name = "Sorin Popovici", Email = "sorinp@gmail.com" });
+            userList.Add(new User() { UserId = 0, Name = "DefaultUser Hardcoded", Email = "defaultemail@gmail.com" });
+            userList.Add(new User() { UserId = 1, Name = "Vasile Popa Hardcoded", Email = "vasile.popa@gmail.com" });
+            userList.Add(new User() { UserId = 2, Name = "Anca Marcu Hardcoded", Email = "ancamarcu@yahoo.com" });
+            userList.Add(new User() { UserId = 3, Name = "Sorin Popovici Hardcoded", Email = "sorinp@gmail.com" });
             return userList;
         }
 

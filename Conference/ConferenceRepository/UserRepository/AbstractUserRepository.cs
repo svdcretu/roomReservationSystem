@@ -16,7 +16,7 @@ namespace ConferenceRepository.UserRepository
             User user = null;
             try
             {
-                user = userList.SingleOrDefault(x => x.UserId == id);
+                user = userList.Single(x => x.UserId == id);
             }
 
             catch (InvalidOperationException)

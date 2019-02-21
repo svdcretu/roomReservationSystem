@@ -21,14 +21,12 @@ namespace BusinesServices.UserBusiness
         public IList<User> GetData()
         {
             IList<User> data = _userRepository.GetData();
-
             return data;
         }
 
         public User GetDataById(int id)
         {
             User data = _userRepository.GetDataById(id);
-
             return data;
         }
 
