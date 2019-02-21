@@ -4,7 +4,7 @@ using ConferenceUtils;
 using System;
 
 using BusinesServices.Contracts;
-using BusinesServices.DisplyInfo;
+using BusinesServices.DisplayInfo;
 using BusinesServices.UserBusiness;
 
 using ConferenceRepository.Contracts;

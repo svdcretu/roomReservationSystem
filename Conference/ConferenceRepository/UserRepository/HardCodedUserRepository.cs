@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using ConferenceRepository.Contracts;
+﻿using System.Collections.Generic;
 using ConferenceModels;
 
 namespace ConferenceRepository.UserRepository
 {
-    public class HardCodedUserRepository: IRepository<User>
+    public class HardCodedUserRepository : AbstractUserRepository
     {
-        public IList<User> GetData()
+        public override IList<User> GetData()
         {
-            throw new NotImplementedException();
+            IList<User> userList = new List<User>();
+            userList.Add(new User() { UserId = 0, Name = "DefaultUser", Email = "defaultemail@gmail.com" });
+            userList.Add(new User() { UserId = 1, Name = "Vasile Popa", Email = "vasile.popa@gmail.com" });
+            userList.Add(new User() { UserId = 2, Name = "Anca Marcu", Email = "ancamarcu@yahoo.com" });
+            userList.Add(new User() { UserId = 3, Name = "Sorin Popovici", Email = "sorinp@gmail.com" });
+            return userList;
         }
 
-        public User GetDataById(int id)
+        public new User GetDataById(int id)
         {
-            throw new NotImplementedException();
+            User user = base.GetDataById(id);
+            return user;
         }
     }
 }

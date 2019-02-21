@@ -8,7 +8,7 @@ using BusinesServices.Contracts;
 
 using ConferenceModels;
 
-namespace BusinesServices.DisplyInfo
+namespace BusinesServices.DisplayInfo
 {
     public class DisplayUserService : IDisplayService<User>
     {

@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractRepository.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomRepository\FileBaseRoomRepository.cs" />
+    <Compile Include="RoomRepository\HardcodedRoomRepository.cs" />
     <Compile Include="UserRepository\FileBaseUserRepository.cs" />
     <Compile Include="UserRepository\HardCodedUserRepository.cs" />
   </ItemGroup>
@@ -51,6 +54,10 @@
     <ProjectReference Include="..\ConferenceModels\ConferenceModels.csproj">
       <Project>{ea36b6c9-9bc9-43f6-932a-1e17f9826344}</Project>
       <Name>ConferenceModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj">
+      <Project>{0FB1EC57-77AA-4DEA-9D8F-8D0C360A06B8}</Project>
+      <Name>ConferenceUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
