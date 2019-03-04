@@ -2,10 +2,10 @@
 
 namespace ConferenceModels
 {
-	public class User
+	public class User: IConferenceModel
 	{
-		public int UserId { get; set; }
-		public string Name { get; set; }
+	    public int Id { get; set; }
+        public string Name { get; set; }
 		public string Email { get; set; }
 
         

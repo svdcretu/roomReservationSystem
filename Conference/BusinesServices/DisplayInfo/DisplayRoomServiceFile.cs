@@ -11,7 +11,7 @@ namespace BusinesServices.DisplayInfo
         {
             if (room != null)
             {
-                string line = string.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
+                string line = string.Format($"Room Id: {room.Id}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
                 Utils.PrintToFile(line);
             }
         }
@@ -23,7 +23,7 @@ namespace BusinesServices.DisplayInfo
                 string roomsToPrint = "";
                 foreach (ConferenceRoom room in roomList)
                 {
-                    roomsToPrint += string.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
+                    roomsToPrint += string.Format($"Room Id: {room.Id}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}") + System.Environment.NewLine;
                 }
                 Utils.PrintToFile(roomsToPrint);
             }

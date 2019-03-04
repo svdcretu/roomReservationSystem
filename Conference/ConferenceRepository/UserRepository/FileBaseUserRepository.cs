@@ -4,18 +4,12 @@ using ConferenceUtils;
 
 namespace ConferenceRepository.UserRepository
 {
-    public class FileBaseUserRepository : AbstractUserRepository
+    public class FileBaseUserRepository : AbstractRepository<User>
     {
         public override IList<User> GetData()
         {
             List<User> userList = Utils.readTextFileToUserObject("UsersRepo.txt");
             return userList;
-        }
-
-        public new User GetDataById(int id)
-        {
-            User user = base.GetDataById(id);
-            return user;
         }
     }
 }

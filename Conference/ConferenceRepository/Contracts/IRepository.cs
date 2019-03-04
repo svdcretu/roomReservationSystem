@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 
+using ConferenceModels;
+
 namespace ConferenceRepository.Contracts
 {
     /// <summary>
     /// Repository contract
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IRepository<T>
+    public interface IRepository<T> where T: IConferenceModel
     {
         /// <summary>
         /// Gets the list of all the data in system

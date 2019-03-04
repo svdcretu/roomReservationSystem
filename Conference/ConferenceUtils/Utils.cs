@@ -113,7 +113,7 @@ namespace ConferenceUtils
 
                     roomList.Add(new ConferenceRoom()
                     {
-                        RoomId = int.Parse(parts[0]),
+                        Id = int.Parse(parts[0]),
                         Name = parts[1],
                         Description = parts[2],
                         Site = parts[3],

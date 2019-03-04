@@ -12,7 +12,7 @@ namespace BusinesServices.DisplayInfo
             if (room != null)
             {
                 Console.WriteLine("--- Printing Room ---");
-                Console.WriteLine(String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}"));
+                Console.WriteLine(String.Format($"Room Id: {room.Id}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}"));
                 Console.WriteLine("--- End Printing Room ---");
             }
         }
@@ -24,7 +24,7 @@ namespace BusinesServices.DisplayInfo
                 Console.WriteLine("--- Printing Room List ---");
                 foreach (ConferenceRoom room in roomList)
                 {
-                    Console.WriteLine(String.Format($"Room Id: {room.RoomId}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}"));
+                    Console.WriteLine(String.Format($"Room Id: {room.Id}, Name: {room.Name}, Description: {room.Description}, Site: {room.Site}, Equipments: {string.Join(", ", room.EquipmentList.ToArray())}"));
                 }
                 Console.WriteLine("--- End Printing Room List ---");
             }
