@@ -144,7 +144,7 @@ namespace ConferenceUtils
 
                     userList.Add(new User()
                     {
-                        UserId = int.Parse(parts[0].Trim()),
+                        Id = int.Parse(parts[0].Trim()),
                         Name = parts[1].Trim(),
                         Email = parts[2].Trim(),
                     });
