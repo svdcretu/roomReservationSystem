@@ -1,18 +1,17 @@
 ﻿using ConferenceModels;
-using ConferenceUtils;
 using System;
 using System.Collections.Generic;
 
 namespace BusinesServices.Contracts
 {
-    public abstract class AbstractPrintToConsole<T> : IPrint<T> where T : IConferenceModel
+    public class PrintToConsole<T> : IPrint<T> where T : IConferenceModel
     {
-        public void Print(T entity)
+        public virtual void Print(T entity)
         {
-            Utils.PrintToFile(entity.GetDescription);
+            Console.WriteLine(entity.GetDescription);
         }
 
-        public void Print(List<T> entityList)
+        public virtual void Print(IList<T> entityList)
         {
             if (entityList.Count > 0)
             {

@@ -7,12 +7,12 @@ using ConferenceRepository.Contracts;
 
 namespace BusinesServices.UserBusiness
 {
-    public class UserService: IBusinesService<User>
+    public class UserService : IPrint<User>, IBusinesService<User>
     {
         private readonly IRepository<User> _userRepository;
-        private readonly IDisplayService<User> _displayService;
+        IPrint<User> _displayService;
 
-        public UserService(IRepository<User> userRepository, IDisplayService<User> displayService)
+        public UserService(IRepository<User> userRepository, IPrint<User> displayService)
         {
             _userRepository = userRepository;
             _displayService = displayService;
@@ -30,14 +30,15 @@ namespace BusinesServices.UserBusiness
             return data;
         }
 
-        public void Display(User dataToDisplay)
+
+        public void Print(User entity)
         {
-            _displayService.Display(dataToDisplay);
+            _displayService.Print(entity);
         }
 
-        public void Display(IList<User> dataToDisplay)
+        public void Print(IList<User> entityList)
         {
-            _displayService.Display(dataToDisplay);
+            _displayService.Print(entityList);
         }
 
 

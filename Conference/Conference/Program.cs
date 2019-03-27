@@ -1,9 +1,7 @@
 ﻿using BusinesServices.Contracts;
-using BusinesServices.DisplayInfo;
 using BusinesServices.UserBusiness;
 using ConferenceModels;
 using ConferenceRepository.Contracts;
-using ConferenceRepository.UserRepository;
 using ConferenceRepository.RoomRepository;
 using ConferenceUtils;
 using System;
@@ -15,45 +13,9 @@ namespace Conference
         static void Main(string[] args)
         {
 
-            //IBusinesService<User> userService;
-            //IDisplayService<User> userDisplayService;
-            //IRepository<User> userRepository;
 
-            ////Get user repository option from user
-            //string userRepositoryOption = Utils.GetUsersRepositoryOptionFromUser();
-            //ConnectionType userConnectionType = (userRepositoryOption == "1" ? ConnectionType.File : ConnectionType.Hardcoded);
-
-            //if (userConnectionType == ConnectionType.Hardcoded)
-            //{
-            //    userRepository = new HardCodedUserRepository();
-            //}
-            //else
-            //{
-            //    userRepository = new FileBaseUserRepository();
-            //}
-
-            ////Get user print option from user
-            //string userPrintOption = Utils.GetPrintOptionFromUser();
-
-            //if (userPrintOption == "1")
-            //{
-            //    userDisplayService = new DisplayUserServiceFile();
-            //}
-            //else
-            //{
-            //    userDisplayService = new DisplayUserServiceConsole();
-            //}
-
-            //userService = new UserService(userRepository, userDisplayService);
-
-            //var userList = userService.GetData();
-            //userService.Display(userList);
-            //var user = userService.GetDataById(15);           
-            //userService.Display(user);
-
-
-            IBusinesService<ConferenceRoom> roomService;
-            IDisplayService<ConferenceRoom> roomDisplayService;
+            RoomService roomService;
+            IPrint<ConferenceRoom> roomDisplayService;
             IRepository<ConferenceRoom> roomRepository;
 
             //Get room repository option from user
@@ -74,19 +36,20 @@ namespace Conference
 
             if (roomPrintOption == "1")
             {
-                roomDisplayService = new DisplayRoomServiceFile();
+                roomDisplayService = new PrintToFile<ConferenceRoom>();
             }
             else
             {
-                roomDisplayService = new DisplayRoomServiceConsole();
+                roomDisplayService = new PrintToConsole<ConferenceRoom>();
             }
 
             roomService = new RoomService(roomRepository, roomDisplayService);
 
             var roomList = roomService.GetData();
-            roomService.Display(roomList);
-            var room = roomService.GetDataById(15);
-            roomService.Display(room);
+            roomService.Print(roomList);
+
+            var room = roomService.GetDataById(2);
+            roomService.Print(room);
 
             Console.ReadKey();
 

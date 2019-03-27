@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace BusinesServices.Contracts
 {
-    public abstract class AbstractPrintToFile<T> : IPrint<T> where T : IConferenceModel
+    public class PrintToFile<T> : IPrint<T> where T : IConferenceModel
     {
         public void Print(T entity)
         {
             Utils.PrintToFile(entity.GetDescription);
         }
 
-        public void Print(List<T> entityList)
+        public void Print(IList<T> entityList)
         {
             if (entityList.Count > 0)
             {

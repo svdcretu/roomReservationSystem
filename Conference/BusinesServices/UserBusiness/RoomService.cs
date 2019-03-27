@@ -6,31 +6,15 @@ using ConferenceRepository.Contracts;
 
 namespace BusinesServices.UserBusiness
 {
-    public class RoomService : IBusinesService<ConferenceRoom>, IPrint<ConferenceRoom>
+    public class RoomService : IPrint<ConferenceRoom>, IBusinesService<ConferenceRoom>
     {
         IRepository<ConferenceRoom> _repository;
-        IDisplayService<ConferenceRoom> _displayService;
+        IPrint<ConferenceRoom> _displayService;
 
-        //public RoomService(IRepository<ConferenceRoom> repository, IDisplayService<ConferenceRoom> displayService)
-        //{
-        //    _repository = repository;
-        //    _displayService = displayService;
-        //}
-
-        public RoomService(IRepository<ConferenceRoom> repository, IDisplayService<ConferenceRoom> displayService)
+        public RoomService(IRepository<ConferenceRoom> repository, IPrint<ConferenceRoom> displayService)
         {
             _repository = repository;
             _displayService = displayService;
-        }
-
-        public void Display(ConferenceRoom dataToDisplay)
-        {
-            _displayService.Display(dataToDisplay);
-        }
-
-        public void Display(IList<ConferenceRoom> dataToDisplay)
-        {
-            _displayService.Display(dataToDisplay);
         }
 
         public IList<ConferenceRoom> GetData()
@@ -47,12 +31,12 @@ namespace BusinesServices.UserBusiness
 
         public void Print(ConferenceRoom entity)
         {
-            throw new System.NotImplementedException();
+            _displayService.Print(entity);
         }
 
-        public void Print(List<ConferenceRoom> entityList)
+        public void Print(IList<ConferenceRoom> entityList)
         {
-            throw new System.NotImplementedException();
+            _displayService.Print(entityList);
         }
     }
 }

@@ -21,16 +21,6 @@ namespace BusinesServices.Contracts
         /// <returns>An data entity based on id. Returns null if not found, and exception if duplicate id's found.</returns>
         T GetDataById(int id);
 
-        /// <summary>
-        /// Display the data
-        /// </summary>
-        /// <param name="dataToDisplay">Data to display</param>
-        void Display(T dataToDisplay);
 
-        /// <summary>
-        /// Display a list of data
-        /// </summary>
-        /// <param name="dataToDisplay">The list to be displayed</param>
-        void Display(IList<T> dataToDisplay);
     }
 }

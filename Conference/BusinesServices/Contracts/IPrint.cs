@@ -10,6 +10,6 @@ namespace BusinesServices.Contracts
     public interface IPrint<T> 
     {
         void Print(T entity);
-        void Print(List<T> entityList);
+        void Print(IList<T> entityList);
     }
 }
