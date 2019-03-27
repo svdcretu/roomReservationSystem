@@ -6,9 +6,13 @@ namespace ConferenceModels
 	{
 	    public int Id { get; set; }
 
-	    public string GetDescription()
+	    public string GetDescription
 	    {
-	        throw new NotImplementedException();
+            get
+            {
+                string description = string.Format($"Id: {Id}, Name: {Name}, Email: {Email}") + System.Environment.NewLine;
+                return description;
+            }
 	    }
 
 	    public string Name { get; set; }

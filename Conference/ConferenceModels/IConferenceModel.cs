@@ -3,7 +3,6 @@
     public interface IConferenceModel
     {
         int Id { get; set; }
-
-        string GetDescription();
+        string GetDescription { get; }
     }
 }

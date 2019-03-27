@@ -12,7 +12,7 @@ namespace BusinesServices.DisplayInfo
             if (user != null)
             {
                 Console.WriteLine("--- Printing User ---");
-                Console.WriteLine(String.Format($"Id: {user.Id}, Name: {user.Name}, Email: {user.Email}"));
+                Console.WriteLine(user.GetDescription);
                 Console.WriteLine("--- End Printing User ---");
             }
 
@@ -25,7 +25,7 @@ namespace BusinesServices.DisplayInfo
                 Console.WriteLine("--- Printing User List ---");
                 foreach (User user in userList)
                 {
-                    Console.WriteLine(String.Format($"Id: {user.Id}, Name: {user.Name}, Email: {user.Email}"));
+                    Console.WriteLine(user.GetDescription);
                 }
                 Console.WriteLine("--- End Printing User List ---");
             }

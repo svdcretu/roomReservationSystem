@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\AbstractPrintToConsole.cs" />
+    <Compile Include="Contracts\AbstractPrintToFilt.cs" />
+    <Compile Include="Contracts\IPrint.cs" />
     <Compile Include="Contracts\IBusinesService.cs" />
     <Compile Include="Contracts\IDisplayService.cs" />
     <Compile Include="DisplayInfo\DisplayRoomServiceFile.cs" />

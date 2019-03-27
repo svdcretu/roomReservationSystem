@@ -11,8 +11,7 @@ namespace BusinesServices.DisplayInfo
         {
             if (user != null)
             {
-                string line = string.Format($"Id: {user.Id}, Name: {user.Name}, Email: {user.Email}") + System.Environment.NewLine;
-                Utils.PrintToFile(line);
+                Utils.PrintToFile(user.GetDescription);
             }
 
         }
@@ -24,7 +23,7 @@ namespace BusinesServices.DisplayInfo
                 string usersToPrint = "";
                 foreach (User user in userList)
                 {
-                    usersToPrint += string.Format($"Id: {user.Id}, Name: {user.Name}, Email: {user.Email}") + System.Environment.NewLine;
+                    usersToPrint += user.GetDescription;
                 }
                 if (!string.IsNullOrEmpty(usersToPrint))
                 {

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using ConferenceModels;
+using System.Collections.Generic;
 
 
 namespace BusinesServices.Contracts
 {
-    public interface IDisplayService<T>
+    public interface IDisplayService<T> 
     {
         /// <summary>
         /// Display the data
