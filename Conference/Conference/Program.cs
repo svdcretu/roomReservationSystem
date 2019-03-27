@@ -2,6 +2,7 @@
 using BusinesServices.UserBusiness;
 using ConferenceModels;
 using ConferenceRepository.Contracts;
+using BusinesServices.Print;
 using ConferenceRepository.RoomRepository;
 using ConferenceUtils;
 using System;

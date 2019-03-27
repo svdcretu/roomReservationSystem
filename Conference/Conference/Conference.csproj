@@ -149,10 +149,6 @@
       <Project>{c4856fe6-56a1-4c40-b761-ee7858e26639}</Project>
       <Name>ConferenceRepository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConferenceServices\ConferenceServices.csproj">
-      <Project>{b5991969-481a-44b5-b55f-8ea9ba18dccb}</Project>
-      <Name>ConferenceServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConferenceUtils\ConferenceUtils.csproj">
       <Project>{c7f84633-8f51-4148-b735-fabddbc58275}</Project>
       <Name>ConferenceUtils</Name>

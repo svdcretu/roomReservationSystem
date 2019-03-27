@@ -82,9 +82,5 @@ namespace ConferenceServices
             return roomList;
         }
 
-        public void Print(string destination)
-        {
-            PrintEntity.Print(_roomListAsString, destination);
-        }
     }
 }

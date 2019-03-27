@@ -1,8 +1,9 @@
 ﻿using ConferenceModels;
 using System;
 using System.Collections.Generic;
+using BusinesServices.Contracts;
 
-namespace BusinesServices.Contracts
+namespace BusinesServices.Print
 {
     public class PrintToConsole<T> : IPrint<T> where T : IConferenceModel
     {

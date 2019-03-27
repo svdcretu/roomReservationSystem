@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\PrintToConsole.cs" />
-    <Compile Include="Contracts\PrintToFile.cs" />
+    <Compile Include="Print\PrintToConsole.cs" />
+    <Compile Include="Print\PrintToFile.cs" />
     <Compile Include="Contracts\IPrint.cs" />
     <Compile Include="Contracts\IBusinesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,8 +63,6 @@
       <Name>ConferenceUtils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DisplayInfo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
